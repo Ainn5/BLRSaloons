@@ -40,10 +40,10 @@ footer{border-top:1px solid var(--line);padding:24px 0 34px;color:var(--muted);f
 <div class="hero">
 <div class="eyebrow">Bengaluru · Beauty & grooming</div>
 <h1>Good hair days<br>start around the corner.</h1>
-<p>Explore salon brands by Bangalore locality. Search an area or service, then open Maps to check nearby outlets, current hours and directions.</p>
+<p>Find salons in Bangalore that offer services for both men and women. Browse by locality, then open Maps to check nearby unisex salon outlets, current hours and directions.</p>
 <form class="search-panel" id="searchForm">
 <div class="field"><label for="search">SALON OR AREA</label><input id="search" type="search" placeholder="Try Indiranagar, Naturals…" autocomplete="off"></div>
-<div class="field"><label for="service">SERVICE TYPE</label><select id="service"><option value="all">All services</option><option value="hair">Haircut & styling</option><option value="beauty">Beauty & skin</option><option value="grooming">Men's grooming</option><option value="premium">Premium salon</option></select></div>
+<div class="field"><label for="service">SERVICE TYPE</label><select id="service"><option value="all">All services</option><option value="unisex">Men & women (unisex)</option><option value="hair">Haircut & styling</option><option value="beauty">Beauty & skin</option><option value="grooming">Men's grooming</option><option value="premium">Premium salon</option></select></div>
 <button type="submit">Find salons <span aria-hidden="true">↗</span></button>
 </form>
 </div>
@@ -52,19 +52,19 @@ footer{border-top:1px solid var(--line);padding:24px 0 34px;color:var(--muted);f
 <main class="wrap">
 <div class="stats" aria-label="Directory highlights">
 <div class="stat"><strong id="areaCount">12 areas</strong><span>Bangalore localities</span></div>
-<div class="stat"><strong id="brandCount">6 brands</strong><span>Salon brands to explore</span></div>
+<div class="stat"><strong id="brandCount">6 brands</strong><span>Unisex salon brands to explore</span></div>
 <div class="stat"><strong>Maps links</strong><span>Check real nearby outlets</span></div>
 </div>
 <section>
-<div class="section-head"><div><h2>Explore by area</h2><p>Choose a locality to narrow down the salon list.</p></div></div>
+<div class="section-head"><div><h2>Unisex salons by area</h2><p>Choose a locality to find salons to check for both men’s and women’s services.</p></div></div>
 <div class="area-pills" id="areaPills" aria-label="Filter by area"></div>
 </section>
 <section>
-<div class="section-head"><div><h2 id="listingTitle">Salons across Bangalore</h2><p>Find a salon that fits your style and neighbourhood.</p></div></div>
+<div class="section-head"><div><h2 id="listingTitle">Unisex salons across Bangalore</h2><p>Search local branches offering services for men and women.</p></div></div>
 <div class="results-bar"><span id="resultCount" aria-live="polite">Loading salons…</span><span>Outlet details can change — verify on Maps.</span></div>
 <div class="results" id="results"></div>
 </section>
-<aside class="info"><div class="info-icon" aria-hidden="true">ⓘ</div><div><h3>Before you visit</h3><p>This is a locality-based discovery directory, not a live verified outlet database. Each button opens a Google Maps search for that salon brand and area. Confirm the exact branch, address, opening hours, prices and available services with the outlet before travelling.</p></div></aside>
+<aside class="info"><div class="info-icon" aria-hidden="true">ⓘ</div><div><h3>Before you visit</h3><p>This is a locality-based discovery directory, not a live verified outlet database. The listed brands are commonly associated with hair and beauty services for men and women, but services vary by branch. Each button searches Google Maps for a unisex salon in that area. Confirm the exact branch, whether it serves both men and women, available services, address, hours and prices before visiting.</p></div></aside>
 </main>
 <footer><div class="wrap foot"><span>© <span id="year"></span> BLR Saloons · Bangalore, Karnataka</span><span>Made for phones, tablets and desktop browsers.</span></div></footer>
 <script>
@@ -73,12 +73,12 @@ const areas = [
 "Marathahalli","Electronic City","JP Nagar","Rajajinagar","Malleshwaram","MG Road"
 ];
 const brands = [
-{name:"Naturals",services:["hair","beauty"],description:"Haircuts, styling and beauty services",icon:"✂"},
-{name:"Green Trends",services:["hair","beauty"],description:"Hair and beauty care",icon:"🌿"},
-{name:"Jawed Habib Hair & Beauty",services:["hair"],description:"Haircut, styling and hair care",icon:"💇"},
-{name:"Toni&Guy",services:["hair","premium"],description:"Salon styling and hair treatments",icon:"✨"},
-{name:"Jean-Claude Biguine (JCB)",services:["hair","beauty","premium"],description:"Premium hair styling and beauty salon services",icon:"💇"},
-{name:"Looks Salon",services:["hair","beauty","premium"],description:"Hair and beauty salon services",icon:"💈"},
+{name:"Naturals",services:["unisex","hair","beauty"],description:"Salon search for men’s and women’s haircuts, styling and beauty services",icon:"✂"},
+{name:"Green Trends",services:["unisex","hair","beauty"],description:"Salon search for men’s and women’s hair and beauty care",icon:"🌿"},
+{name:"Jawed Habib Hair & Beauty",services:["unisex","hair"],description:"Haircut, styling and hair care for men and women (confirm branch services)",icon:"💇"},
+{name:"Toni&Guy",services:["unisex","hair","premium"],description:"Premium styling and hair treatments for men and women (confirm branch services)",icon:"✨"},
+{name:"Jean-Claude Biguine (JCB)",services:["unisex","hair","beauty","premium"],description:"Premium hair styling and beauty salon search for men and women",icon:"💇"},
+{name:"Looks Salon",services:["unisex","hair","beauty","premium"],description:"Hair and beauty salon search for men and women",icon:"💈"},
 {name:"Men's salon & barber shops",services:["hair","grooming"],description:"Explore local barbers and men's grooming",icon:"🪒"}
 ];
 const results = document.getElementById("results");
@@ -89,7 +89,7 @@ let selectedArea = "All Bangalore";
 document.getElementById("areaCount").textContent = areas.length + " areas";
 document.getElementById("brandCount").textContent = brands.length + " options";
 document.getElementById("year").textContent = new Date().getFullYear();
-function mapsUrl(brand, area){return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(brand+" salon in "+area+", Bengaluru, Karnataka");}
+function mapsUrl(brand, area){return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(brand+" unisex salon men women services in "+area+", Bengaluru, Karnataka");}
 function makePills(){
   pills.innerHTML="";
   ["All Bangalore",...areas].forEach(area=>{
@@ -105,11 +105,11 @@ function render(){
  const cards=[];
  filteredAreas.forEach(area=>brands.forEach(brand=>{
    const matchesText=(brand.name+" "+brand.description+" "+area+" bangalore bengaluru").toLowerCase().includes(term);
-   const matchesService=chosen==="all"||brand.services.includes(chosen);
+   const matchesService=chosen==="all"||(chosen==="unisex"?brand.services.includes("unisex"):brand.services.includes(chosen));
    if(matchesText&&matchesService)cards.push({area,brand});
  }));
  results.innerHTML="";
- document.getElementById("listingTitle").textContent=selectedArea==="All Bangalore"?"Salons across Bangalore":"Salons in "+selectedArea;
+ document.getElementById("listingTitle").textContent=selectedArea==="All Bangalore"?"Unisex salons across Bangalore":"Unisex salons in "+selectedArea;
  document.getElementById("resultCount").textContent=cards.length+" search options · "+(selectedArea==="All Bangalore"?"all listed areas":selectedArea);
  if(!cards.length){const empty=document.createElement("div");empty.className="empty";empty.innerHTML="<h3>No matches found</h3><p>Try another salon name, area or service filter.</p>";results.appendChild(empty);return;}
  cards.forEach(({area,brand})=>{
@@ -121,8 +121,8 @@ function render(){
    const sub=document.createElement("div");sub.className="area-label";sub.textContent=area+", Bengaluru";
    details.append(h,sub);top.append(avatar,details);
    const tags=document.createElement("div");tags.className="tag-row";
-   brand.services.forEach(s=>{const t=document.createElement("span");t.className="tag";t.textContent=({"hair":"Hair","beauty":"Beauty","grooming":"Men's grooming","premium":"Premium"})[s];tags.appendChild(t);});
-   const p=document.createElement("p");p.textContent=brand.description+". Search Maps for nearby branches.";
+   brand.services.forEach(s=>{const t=document.createElement("span");t.className="tag";t.textContent=({"unisex":"Men & women","hair":"Hair","beauty":"Beauty","grooming":"Men's grooming","premium":"Premium"})[s];tags.appendChild(t);});
+   const p=document.createElement("p");p.textContent=brand.description+". Check the branch listing on Maps before visiting.";
    const a=document.createElement("a");a.className="button";a.href=mapsUrl(brand.name,area);a.target="_blank";a.rel="noopener noreferrer";a.textContent="Find on Google Maps ↗";
    card.append(top,tags,p,a);results.appendChild(card);
  });

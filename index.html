@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#402b35">
+<meta name="description" content="Find salons across Bangalore by area. Search salon brands, services and localities, then open Google Maps to verify nearby outlets.">
+<title>BLR Saloons | Bangalore Salon Directory</title>
+<style>
+:root{--ink:#28212a;--muted:#716874;--paper:#fffaf7;--card:#ffffff;--plum:#402b35;--rose:#e9b7b0;--line:#eee3df;--mint:#e7f0e9;--shadow:0 12px 34px rgba(64,43,53,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.5}
+a{color:inherit}.wrap{width:min(1160px,calc(100% - 32px));margin:auto}
+header{background:var(--plum);color:white;padding:18px 0 64px;position:relative;overflow:hidden}
+header:after{content:"";position:absolute;width:360px;height:360px;border:1px solid #ffffff24;border-radius:50%;right:-100px;top:-190px;box-shadow:0 0 0 35px #ffffff08,0 0 0 75px #ffffff06;pointer-events:none}
+nav{display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative;z-index:1}
+.logo{display:flex;align-items:center;gap:10px;font-weight:850;letter-spacing:-.04em;font-size:1.15rem}.logo-mark{display:grid;place-items:center;background:var(--rose);color:var(--plum);width:38px;height:38px;border-radius:13px;font-size:1.15rem}
+.nav-note{font-size:.88rem;color:#f0e4e8}
+.hero{padding-top:48px;max-width:760px;position:relative;z-index:1}.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-weight:800;font-size:.74rem;color:#f3c9c3}
+h1{font-size:clamp(2.2rem,6vw,4.6rem);line-height:1.03;letter-spacing:-.065em;margin:13px 0 18px;max-width:700px}.hero p{font-size:1.06rem;color:#f0e6e9;max-width:630px;margin:0 0 26px}
+.search-panel{background:white;color:var(--ink);border-radius:20px;padding:12px;display:grid;grid-template-columns:1.5fr 1fr auto;gap:10px;box-shadow:0 16px 42px #21121b26}
+.field{min-width:0;display:flex;flex-direction:column;gap:4px;padding:4px 10px}.field label{font-size:.72rem;color:var(--muted);font-weight:750}.field input,.field select{width:100%;min-width:0;border:0;outline:0;background:white;color:var(--ink);font:inherit;font-size:.94rem;padding:2px 0}
+button,.button{border:0;border-radius:12px;background:var(--plum);color:white;padding:13px 18px;font:inherit;font-weight:750;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #cb8177;outline-offset:3px}
+main{padding:30px 0 64px}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:-54px;position:relative;z-index:2;margin-bottom:36px}
+.stat{background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);border-radius:16px;padding:18px 20px}.stat strong{display:block;font-size:1.3rem;letter-spacing:-.03em}.stat span{font-size:.83rem;color:var(--muted)}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:18px;margin:34px 0 16px}.section-head h2{margin:0;font-size:clamp(1.45rem,3vw,2rem);letter-spacing:-.04em}.section-head p{margin:5px 0 0;color:var(--muted);font-size:.92rem}.area-pills{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}.pill{border:1px solid var(--line);border-radius:999px;padding:9px 14px;background:white;color:var(--ink);font-size:.85rem;font-weight:700;cursor:pointer}.pill[aria-pressed=true]{background:var(--plum);color:white;border-color:var(--plum)}
+.results-bar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin:12px 0 16px;color:var(--muted);font-size:.88rem}.results{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:19px;box-shadow:0 5px 20px #402b3508;display:flex;flex-direction:column;min-width:0;transition:transform .15s,box-shadow .15s}.card:hover{transform:translateY(-2px);box-shadow:var(--shadow)}.card-top{display:flex;align-items:flex-start;gap:12px}.avatar{width:46px;height:46px;flex:0 0 46px;border-radius:15px;background:var(--mint);display:grid;place-items:center;font-size:1.3rem}.card h3{font-size:1.05rem;line-height:1.25;margin:2px 0 5px;letter-spacing:-.02em;overflow-wrap:anywhere}.area-label{font-size:.82rem;color:var(--muted)}.tag-row{display:flex;gap:6px;flex-wrap:wrap;margin:15px 0}.tag{font-size:.73rem;padding:5px 8px;border-radius:7px;background:#f8efec;color:#6c4a52;font-weight:700}.card p{font-size:.85rem;color:var(--muted);margin:0 0 16px}.card .button{margin-top:auto;width:100%;font-size:.88rem;padding:11px 12px;min-height:44px}.card .button:hover,button:hover{background:#61404e}.empty{grid-column:1/-1;padding:40px 20px;text-align:center;background:white;border:1px dashed #d9c9c4;border-radius:18px}.empty h3{margin:0 0 6px}.empty p{margin:0;color:var(--muted)}
+.info{background:#f3e8e4;border-radius:18px;padding:22px;margin-top:34px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:start}.info-icon{font-size:1.5rem}.info h3{margin:0 0 5px;font-size:1rem}.info p{margin:0;color:#655860;font-size:.88rem}
+footer{border-top:1px solid var(--line);padding:24px 0 34px;color:var(--muted);font-size:.82rem}footer .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+@media(max-width:800px){.results{grid-template-columns:repeat(2,minmax(0,1fr))}.search-panel{grid-template-columns:1fr 1fr}.search-panel button{grid-column:1/-1}.hero{padding-top:36px}.nav-note{display:none}}
+@media(max-width:520px){.wrap{width:min(100% - 24px,1160px)}header{padding-bottom:72px}.hero{padding-top:32px}h1{font-size:2.55rem}.hero p{font-size:.97rem}.search-panel{grid-template-columns:1fr;padding:10px;gap:5px;border-radius:16px}.field{padding:7px 8px;border-bottom:1px solid #f0e8e5}.field:last-of-type{border-bottom:0}.search-panel button{grid-column:auto;width:100%}.stats{gap:8px;margin-top:-48px;margin-bottom:26px}.stat{padding:13px 11px;border-radius:13px}.stat strong{font-size:1.05rem}.stat span{font-size:.72rem}.results{grid-template-columns:1fr;gap:12px}.card{padding:16px}.section-head{align-items:start;flex-direction:column}.info{padding:17px;grid-template-columns:24px 1fr}.results-bar{align-items:flex-start;flex-direction:column;gap:3px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+<div class="wrap">
+<nav><div class="logo"><span class="logo-mark" aria-hidden="true">✂</span><span>BLR Saloons</span></div><div class="nav-note">Your guide to salons across Bengaluru</div></nav>
+<div class="hero">
+<div class="eyebrow">Bengaluru · Beauty & grooming</div>
+<h1>Good hair days<br>start around the corner.</h1>
+<p>Explore salon brands by Bangalore locality. Search an area or service, then open Maps to check nearby outlets, current hours and directions.</p>
+<form class="search-panel" id="searchForm">
+<div class="field"><label for="search">SALON OR AREA</label><input id="search" type="search" placeholder="Try Indiranagar, Naturals…" autocomplete="off"></div>
+<div class="field"><label for="service">SERVICE TYPE</label><select id="service"><option value="all">All services</option><option value="hair">Haircut & styling</option><option value="beauty">Beauty & skin</option><option value="grooming">Men's grooming</option><option value="premium">Premium salon</option></select></div>
+<button type="submit">Find salons <span aria-hidden="true">↗</span></button>
+</form>
+</div>
+</div>
+</header>
+<main class="wrap">
+<div class="stats" aria-label="Directory highlights">
+<div class="stat"><strong id="areaCount">12 areas</strong><span>Bangalore localities</span></div>
+<div class="stat"><strong id="brandCount">6 brands</strong><span>Salon brands to explore</span></div>
+<div class="stat"><strong>Maps links</strong><span>Check real nearby outlets</span></div>
+</div>
+<section>
+<div class="section-head"><div><h2>Explore by area</h2><p>Choose a locality to narrow down the salon list.</p></div></div>
+<div class="area-pills" id="areaPills" aria-label="Filter by area"></div>
+</section>
+<section>
+<div class="section-head"><div><h2 id="listingTitle">Salons across Bangalore</h2><p>Find a salon that fits your style and neighbourhood.</p></div></div>
+<div class="results-bar"><span id="resultCount" aria-live="polite">Loading salons…</span><span>Outlet details can change — verify on Maps.</span></div>
+<div class="results" id="results"></div>
+</section>
+<aside class="info"><div class="info-icon" aria-hidden="true">ⓘ</div><div><h3>Before you visit</h3><p>This is a locality-based discovery directory, not a live verified outlet database. Each button opens a Google Maps search for that salon brand and area. Confirm the exact branch, address, opening hours, prices and available services with the outlet before travelling.</p></div></aside>
+</main>
+<footer><div class="wrap foot"><span>© <span id="year"></span> BLR Saloons · Bangalore, Karnataka</span><span>Made for phones, tablets and desktop browsers.</span></div></footer>
+<script>
+const areas = [
+"HSR Layout","Koramangala","Indiranagar","Whitefield","Jayanagar","BTM Layout",
+"Marathahalli","Electronic City","JP Nagar","Rajajinagar","Malleshwaram","MG Road"
+];
+const brands = [
+{name:"Naturals",services:["hair","beauty"],description:"Haircuts, styling and beauty services",icon:"✂"},
+{name:"Green Trends",services:["hair","beauty"],description:"Hair and beauty care",icon:"🌿"},
+{name:"Jawed Habib Hair & Beauty",services:["hair"],description:"Haircut, styling and hair care",icon:"💇"},
+{name:"Toni&Guy",services:["hair","premium"],description:"Salon styling and hair treatments",icon:"✨"},
+{name:"Looks Salon",services:["hair","beauty","premium"],description:"Hair and beauty salon services",icon:"💈"},
+{name:"Men's salon & barber shops",services:["hair","grooming"],description:"Explore local barbers and men's grooming",icon:"🪒"}
+];
+const results = document.getElementById("results");
+const pills = document.getElementById("areaPills");
+const search = document.getElementById("search");
+const service = document.getElementById("service");
+let selectedArea = "All Bangalore";
+document.getElementById("areaCount").textContent = areas.length + " areas";
+document.getElementById("brandCount").textContent = brands.length + " options";
+document.getElementById("year").textContent = new Date().getFullYear();
+function mapsUrl(brand, area){return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(brand+" salon in "+area+", Bengaluru, Karnataka");}
+function makePills(){
+  pills.innerHTML="";
+  ["All Bangalore",...areas].forEach(area=>{
+    const b=document.createElement("button");b.type="button";b.className="pill";b.textContent=area;
+    b.setAttribute("aria-pressed",String(selectedArea===area));
+    b.addEventListener("click",()=>{selectedArea=area;makePills();render();});
+    pills.appendChild(b);
+  });
+}
+function render(){
+ const term=search.value.trim().toLowerCase(), chosen=service.value;
+ const filteredAreas=selectedArea==="All Bangalore"?areas:areas.filter(a=>a===selectedArea);
+ const cards=[];
+ filteredAreas.forEach(area=>brands.forEach(brand=>{
+   const matchesText=(brand.name+" "+brand.description+" "+area+" bangalore bengaluru").toLowerCase().includes(term);
+   const matchesService=chosen==="all"||brand.services.includes(chosen);
+   if(matchesText&&matchesService)cards.push({area,brand});
+ }));
+ results.innerHTML="";
+ document.getElementById("listingTitle").textContent=selectedArea==="All Bangalore"?"Salons across Bangalore":"Salons in "+selectedArea;
+ document.getElementById("resultCount").textContent=cards.length+" search options · "+(selectedArea==="All Bangalore"?"all listed areas":selectedArea);
+ if(!cards.length){const empty=document.createElement("div");empty.className="empty";empty.innerHTML="<h3>No matches found</h3><p>Try another salon name, area or service filter.</p>";results.appendChild(empty);return;}
+ cards.forEach(({area,brand})=>{
+   const card=document.createElement("article");card.className="card";
+   const top=document.createElement("div");top.className="card-top";
+   const avatar=document.createElement("div");avatar.className="avatar";avatar.setAttribute("aria-hidden","true");avatar.textContent=brand.icon;
+   const details=document.createElement("div");details.style.minWidth="0";
+   const h=document.createElement("h3");h.textContent=brand.name;
+   const sub=document.createElement("div");sub.className="area-label";sub.textContent=area+", Bengaluru";
+   details.append(h,sub);top.append(avatar,details);
+   const tags=document.createElement("div");tags.className="tag-row";
+   brand.services.forEach(s=>{const t=document.createElement("span");t.className="tag";t.textContent=({"hair":"Hair","beauty":"Beauty","grooming":"Men's grooming","premium":"Premium"})[s];tags.appendChild(t);});
+   const p=document.createElement("p");p.textContent=brand.description+". Search Maps for nearby branches.";
+   const a=document.createElement("a");a.className="button";a.href=mapsUrl(brand.name,area);a.target="_blank";a.rel="noopener noreferrer";a.textContent="Find on Google Maps ↗";
+   card.append(top,tags,p,a);results.appendChild(card);
+ });
+}
+document.getElementById("searchForm").addEventListener("submit",e=>{e.preventDefault();render();document.getElementById("listingTitle").scrollIntoView({behavior:"smooth",block:"start"});});
+search.addEventListener("input",render);service.addEventListener("change",render);
+makePills();render();
+</script>
+</body>
+</html>
